@@ -2,9 +2,15 @@ var miliseconds = 0;
 var interval;
 function timer() {  
    interval = setInterval(function() {
+
+        if (miliseconds === 1000) {
+            var numbers = document.querySelector('.digits');
+            console.log(numbers);
+            numbers.className += " redDigit"; 
+        }
+
         //printing time on screen
         let intString = Array.from(miliseconds.toString());
-        console.log(intString);
         if (intString.length < 2) {
             const st = document.querySelector("#secondTens");
             st.textContent = '0';
@@ -42,13 +48,15 @@ function timer() {
             const mt = document.querySelector("#msTens");
             mt.textContent = intString[3];
         }
+        
        
         //increasing time
         miliseconds++;
 
         //stop timer
         if(miliseconds == 1001){
-            clearInterval(interval); 
+            
+            clearInterval(interval);
         }
    }, 10)
 }
