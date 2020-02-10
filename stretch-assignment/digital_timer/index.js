@@ -1,11 +1,9 @@
-var miliseconds = 0;
-var interval;
+
 function timer() {  
    interval = setInterval(function() {
 
         if (miliseconds === 1000) {
             var numbers = document.querySelector('.digits');
-            console.log(numbers);
             numbers.className += " redDigit"; 
         }
 
@@ -60,4 +58,15 @@ function timer() {
         }
    }, 10)
 }
-timer();
+
+var miliseconds = 0;
+var interval;
+
+const startButton = document.getElementById('start');
+console.log(startButton);
+startButton.addEventListener("click", function() {
+    miliseconds = 0;
+    var numbers = document.querySelector('.digits');
+    numbers.classList.remove("redDigit");
+    timer ();
+});
