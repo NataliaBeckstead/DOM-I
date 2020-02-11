@@ -1,11 +1,13 @@
-
-function timer() {  
+//timer function
+function timer(startButton) {  
    interval = setInterval(function() {
 
         if (miliseconds === 1000) {
             var numbers = document.querySelector('.digits');
             numbers.className += " redDigit"; 
         }
+
+        startButton.disabled = true;
 
         //printing time on screen
         let intString = Array.from(miliseconds.toString());
@@ -53,20 +55,24 @@ function timer() {
 
         //stop timer
         if(miliseconds == 1001){
-            
             clearInterval(interval);
+            startButton.disabled = false;
         }
    }, 10)
 }
 
+//variables
 var miliseconds = 0;
 var interval;
-
 const startButton = document.getElementById('start');
-console.log(startButton);
+
+//click event to staart timer
 startButton.addEventListener("click", function() {
+    //reset time
     miliseconds = 0;
+    //get rid of red class from numbers
     var numbers = document.querySelector('.digits');
     numbers.classList.remove("redDigit");
-    timer ();
+    //calling timer
+    timer (startButton);
 });
