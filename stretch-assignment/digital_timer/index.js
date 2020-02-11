@@ -74,6 +74,8 @@ var miliseconds = 0;
 var interval;
 const startButton = document.getElementById('start');
 const resetButton = document.getElementById('reset');
+const stopButton = document.getElementById('stop');
+
 
 //click event to start timer
 startButton.addEventListener("click", function() {
@@ -105,4 +107,16 @@ resetButton.addEventListener("click", function () {
     mh.textContent = '-';
     const mt = document.querySelector("#msTens");
     mt.textContent = '-';
+});
+
+//click event for pause button
+stopButton.addEventListener("click", function () {
+    //stop the function
+    clearInterval(interval);
+    //start button back to normal
+    startButton.disabled = false;
+    startButton.style.background = '#007dc1';
+    startButton.style.color = '#ffffff';
+    startButton.style.border = '1px solid #124d77';
+    startButton.style.cursor = "pointer";
 });
