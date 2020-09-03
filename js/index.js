@@ -40,3 +40,52 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+
+//navigation
+let menu = document.querySelectorAll('header nav a');
+for (let i = 0; i < menu.length; i++) {
+   menu[i].textContent = siteContent.nav[`nav-item-${i+1}`];
+}
+
+
+//section class "cta"
+const cta = document.querySelector('.cta');
+
+const h1 = cta.querySelector('h1')
+h1.textContent = siteContent.cta.h1;
+
+const button = cta.querySelector('button');
+button.textContent = siteContent.cta.button;
+
+const ctaIMG = cta.querySelector('#cta-img');
+ctaIMG.src = siteContent.cta["img-src"];
+
+//section class "main-content"
+const mainContent = document.querySelector('.main-content');
+
+const h4sOfMain = mainContent.querySelectorAll('h4');
+const pOfMain = mainContent.querySelectorAll('p');
+const topics = ['features', 'about', 'services', 'product', 'vision'];
+
+for (let i=0; i < h4sOfMain.length; i++) {
+  h4sOfMain[i].textContent = siteContent['main-content'][`${topics[i]}-h4`];
+  pOfMain[i].textContent = siteContent['main-content'][`${topics[i]}-content`];
+}
+
+const mainImg = mainContent.querySelector('img');
+mainImg.src = siteContent["main-content"]["middle-img-src"];
+
+//section class "contact"
+const contact = document.querySelector('.contact').children;
+let contactLines = ["contact-h4", "address", "phone", "email"];
+
+for (let i=0; i < contactLines.length; i++) {
+  contact[i].textContent = siteContent['contact'][contactLines[i]];
+}
+
+//footer
+const footer = document.querySelector('footer > p');
+footer.textContent = siteContent['footer']['copyright'];
+
+
